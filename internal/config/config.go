@@ -17,7 +17,8 @@ type Config struct {
 	KeyMap keymap.KeyMap // The key map to use
 	Styles styles.Styles // The styles to use
 
-	MaxStackFrames int // The maximum number of stack frames to show in errors
+	MaxStackFrames  int  // The maximum number of stack frames to show in errors
+	ShowStackFrames bool // Whether or not to show stack frames on error
 
 	// Packages to filter from the stack trace rendering of errors
 	//
@@ -42,12 +43,13 @@ type Config struct {
 // Default returns a default configuration for the shell
 func Default() *Config {
 	return &Config{
-		HistoryFile:    ".bubble-shell-history",
-		RootContext:    context.Background(),
-		PromptFunc:     func() string { return "> " },
-		KeyMap:         keymap.Default,
-		Styles:         styles.Default,
-		MaxStackFrames: 8,
+		HistoryFile:     ".bubble-shell-history",
+		RootContext:     context.Background(),
+		PromptFunc:      func() string { return "> " },
+		KeyMap:          keymap.Default,
+		Styles:          styles.Default,
+		MaxStackFrames:  8,
+		ShowStackFrames: true,
 		PackagesToFilterFromStack: []string{
 			"runtime",
 			"testing",

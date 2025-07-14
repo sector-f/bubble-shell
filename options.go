@@ -62,6 +62,12 @@ func WithMaxStackFrames(frames int) Option {
 	}
 }
 
+func ShowStackFrames(show bool) Option {
+	return func(o *config.Config) {
+		o.ShowStackFrames = show
+	}
+}
+
 // WithAdditionalStackTraceFilters adds additional packages to filter from the stack traces
 // of errors when rendered to the user.
 func WithAdditionalStackTraceFilters(packages ...string) Option {

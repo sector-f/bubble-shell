@@ -83,7 +83,7 @@ func (m Model) View() string {
 	}
 
 	// Print the stack trace
-	if len(m.frames) > 0 {
+	if m.cfg.ShowStackFrames && len(m.frames) > 0 {
 		lines = append(lines, " ", "Stack trace:")
 
 		count := 0
